@@ -1,4 +1,4 @@
-" Vundle config
+
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -10,31 +10,27 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-Plugin 'git://git.wincent.com/command-t.git'
-
-"From here other plugins from the original Vundle config
-Plugin 'scrooloose/nerdtree'        
-Plugin 'skammer/vim-css-color'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'groenewege/vim-less'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'ycm-core/YouCompleteMe'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'preservim/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'francoiscabrol/ranger.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -47,9 +43,9 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
-" End of Vundle config
-
+"
+"
+"
 " General
 set number  " Show line numbers
 set linebreak " Break lines at word (requires Wrap lines)
@@ -65,10 +61,10 @@ set incsearch " Searches for strings incrementally
  
 set autoindent  " Auto-indent new lines
 set expandtab " Use spaces instead of tabs
-set shiftwidth=2  " Number of auto-indent spaces
+set shiftwidth=4  " Number of auto-indent spaces
 set smartindent " Enable smart-indent
 set smarttab  " Enable smart-tabs
-set softtabstop=2 " Number of spaces per Tab
+set softtabstop=4 " Number of spaces per Tab
  
 " Advanced
 set ruler " Show row and column ruler information
@@ -110,62 +106,33 @@ vmap <C-c> :w !pbcopy<CR><CR>
 set pastetoggle=<F10>
 inoremap <C-v> <F10><C-r>+<F10>
 
-"""""""""""""""""""""""""""
-" Git-gutter configuration
-"""""""""""""""""""""""""""
-
-let g:gitgutter_updatetime = 750
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-
-"""""""""""""""""""""""""""
-" Syntastic configuration
-"""""""""""""""""""""""""""
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-" so that syntastic uses .jshintrc files if present - http://stackoverflow.com/questions/28573553/how-can-i-make-syntastic-load-a-different-checker-based-on-existance-of-files-in
-
-autocmd FileType javascript let b:syntastic_checkers = findfile('.jshintrc', '.;') != '' ? ['jshint'] : ['standard']
-
-"""""""""""""""""""""""""""
-" Custom (no plugin related)
-"""""""""""""""""""""""""""
-
-" show filename
-set statusline+=%F
-let mapleader = "'"
-au VimEnter *  NERDTree
-
-""""""""""""""""""""""""""
-" Set up powerline display
-""""""""""""""""""""""""""
-let g:airline#extensions#tabline#enabled = 1
+""""""""""""""""""""
+" Airline Config
+""""""""""""""""""""
 let g:airline_powerline_fonts = 1
-let g:airline_theme='powerlineish'
 
-"set rtp+=$HOME/.local/lib/python3.8/site-packages/powerline/bindings/vim/
+""""""""""""""""""""
+" NERDTree Config
+""""""""""""""""""""
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
-" Always show statusline
-"set laststatus=2
-
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
-"set t_Co=256
-
-"""""""""""""""""""""""""
-" Setting color theme - installed Solarized8 from Github
-"""""""""""""""""""""""""
+"""""""""""""""""""
+" Colour Config
+"""""""""""""""""""
 set background=dark
 colorscheme solarized8
 
-""""""""""""""""""""""""""
-" Key Mappings
-""""""""""""""""""""""""""
-nmap <leader>n :NERDTreeToggle<CR>
+""""""""""""""""""
+" YCM Config
+""""""""""""""""""
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+
+
+
+
+
+
+
