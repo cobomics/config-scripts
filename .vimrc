@@ -132,6 +132,84 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 
 
 
+"""""""""""""""""""""""""""
+" Git-gutter configuration
+"""""""""""""""""""""""""""
+
+let g:gitgutter_updatetime = 750
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+
+"""""""""""""""""""""""""""
+" Syntastic configuration
+"""""""""""""""""""""""""""
+"
+" syntastic settings
+"
+
+let g:syntastic_enable_signs = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_always_populate_loc_list = 1
+
+
+let g:syntastic_cpp_checkers = ['gcc']
+
+let g:syntastic_auto_jump = 1
+let g:syntastic_enable_balloons = 1
+
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = '-std=c++11 -Wall -Wextra'
+
+
+
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_auto_refresh_includes = 1
+
+"let b:syntastic_cpp_cflags = '-I/home/user/dev/cpp/boost_1_55_0'
+let g:syntastic_cpp_include_dirs = ['/opt/boost_1_55_0','/opt/cryptopp-5.6.2','/opt/llvm_install/include/llvm','/opt/llvm_install/include/clang' ]
+" so that syntastic uses .jshintrc files if present - http://stackoverflow.com/questions/28573553/how-can-i-make-syntastic-load-a-different-checker-based-on-existance-of-files-in
+
+autocmd FileType javascript let b:syntastic_checkers = findfile('.jshintrc', '.;') != '' ? ['jshint'] : ['standard']
+
+"""""""""""""""""""""""""""
+" Custom (no plugin related)
+"""""""""""""""""""""""""""
+
+" show filename
+set statusline+=%F
+
+
+"
+" YouCompleteMe options
+"
+
+let g:ycm_register_as_syntastic_checker = 1
+
+"YCM will put icons in Vim's gutter on lines that have a diagnostic set.
+"Turning this off will also turn off the YcmErrorLine and YcmWarningLine
+"highlighting
+let g:ycm_enable_diagnostic_signs = 1
+let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_always_populate_location_list = 1 "default 0
+let g:ycm_open_loclist_on_ycm_diags = 1 "default 1
+
+
+let g:ycm_complete_in_strings = 1 "default 1
+let g:ycm_collect_identifiers_from_tags_files = 1 "default 0
+let g:ycm_path_to_python_interpreter = '' "default ''
+
+
+let g:ycm_server_use_vim_stdout = 0 "default 0 (logging to console)
+let g:ycm_server_log_level = 'info' "default info
+
+
+let g:ycm_global_ycm_extra_conf = '' "where to search for .ycm_extra_conf.py if not found
+let g:ycm_confirm_extra_conf = 1
+
+let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
+let g:ycm_filetype_whitelist = { '*': 1 }
+let g:ycm_key_invoke_completion = '<C-Space>'
 
 
 
